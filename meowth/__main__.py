@@ -1452,11 +1452,11 @@ def _user_region_list(action, author, enabled_roles):
         response += f" Regions available to leave are: {', '.join(set(enabled_roles).intersection(roles)) or 'N/A'}"
     return response
 
-@_region.command(name="list")
-async def _list(ctx):
+@_region.command(name="mine")
+async def _mine(ctx):
     """Lists the user's active region roles
 
-    Usage: !region list"""
+    Usage: !region mine"""
     message = ctx.message
     guild = message.guild
     channel = message.channel
@@ -1470,6 +1470,15 @@ async def _list(ctx):
     resp = await channel.send(response)
     await asyncio.sleep(15)
     await resp.delete()
+
+@_region.command(name="list")
+async def _list(ctx):
+    message = ctx.message
+    guild = message.guild
+    region_info_dict = guild_dict[guild.id]['configure_dict']['regions']['info']
+    enabled_roles = set([r.get('role', None) for r in region_info_dict.values()])
+    response = f"Available region roles:\n{', '.join(active_roles)}"
+    resp = await channel.send(response)
 
 @Meowth.group(name='set', case_insensitive=True)
 async def _set(ctx):
