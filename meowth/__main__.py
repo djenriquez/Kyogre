@@ -7566,7 +7566,7 @@ async def _get_raid_listing_messages(channel, region=None):
         return listmsg
 
     if activeraidnum:
-        listmsg += _("**Here's the current channels for {0}**\n\n").format(cty.capitalize())
+        listmsg += _("**Current eggs and raids reported in {0}**\n\n").format(cty.capitalize())
         if raid_dict:
             listmsg += process_category(listmsg_list, "Active Raids", [r for (r, __) in sorted(raid_dict.items(), key=itemgetter(1))])
         if egg_dict:
