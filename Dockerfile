@@ -19,7 +19,4 @@ RUN python3 -m pip install -U git+https://github.com/Rapptz/discord.py@rewrite
 ADD . /src
 
 # Set default container command
-ENTRYPOINT ["dumb-init", "--"]
-
-# Run the app
-CMD ["python", "launcher.py"]
+ENTRYPOINT ["dumb-init", "--", "python", "launcher.py"]
