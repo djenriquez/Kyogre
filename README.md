@@ -156,7 +156,7 @@ docker build -t kyogre .
 
 docker run -d -i \
 --name kyogre \
--v /Users/DJ/github/Kyogre/config.json:/src/config.json \
--v /Users/DJ/github/Kyogre/kyogredb:/data \
-djenriquez/kyogre
+-v ${CONFIG_FULL_PATH}:/src/config.json \
+-v ${KYOGRE_DB_PATH}:/src/data \
+kyogre
 ```
